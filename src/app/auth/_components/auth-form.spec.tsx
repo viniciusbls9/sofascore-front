@@ -14,7 +14,7 @@ describe('AuthForm', () => {
     expect(screen.getByTestId('chrome-icon')).toBeInTheDocument()
   })
 
-  test.only('calls loginAction when the login button is clicked', async () => {
+  test('calls loginAction when the login button is clicked', async () => {
     const loginAction = jest.fn()
 
     render(<AuthForm loginAction={loginAction} />)
