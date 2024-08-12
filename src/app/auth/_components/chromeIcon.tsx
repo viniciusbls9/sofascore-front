@@ -11,6 +11,7 @@ const ChromeIcon = () => {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      data-testid="chrome-icon"
     >
       <circle cx="12" cy="12" r="10" />
       <circle cx="12" cy="12" r="4" />
