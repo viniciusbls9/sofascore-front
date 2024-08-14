@@ -1,6 +1,6 @@
 import { auth } from '@/usecases/auth'
 import { redirect } from 'next/navigation'
-import CardPlayer from './components/CardPlayer/CardPlayer'
+import CardPlayers from './components/CardPlayers/CardPlayers'
 import getPlayers from '@/usecases/getPlayers/GetPlayers'
 
 const HomePage = async () => {
@@ -10,7 +10,7 @@ const HomePage = async () => {
 
   const players = await getPlayers()
 
-  return <CardPlayer players={players} />
+  return <CardPlayers players={players} />
 }
 
 export default HomePage
