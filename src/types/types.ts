@@ -7,6 +7,7 @@ export interface PlayerProps {
   fav_position: string
   rating: number
   biography: string
+  image_url: string
 }
 
 export interface CardPlayerProps {
