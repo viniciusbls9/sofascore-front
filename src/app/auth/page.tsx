@@ -1,5 +1,5 @@
 import { AuthForm } from './_components/auth-form'
-import { auth } from '@/services/auth'
+import { auth } from '@/usecases/auth'
 import { handleSocialLogin } from '@/utils/actions'
 import { redirect } from 'next/navigation'
 
