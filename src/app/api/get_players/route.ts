@@ -1,7 +1,20 @@
-export async function GET() {
-  const players = await fetch(`${process.env.API_URL}/get_users`).then((res) =>
-    res.json(),
-  )
+import { NextRequest } from 'next/server'
 
-  return Response.json(players)
+export async function GET(request: NextRequest) {
+  try {
+    const searchParams = request.nextUrl.searchParams
+
+    const loggedUserID = searchParams.get('logged_user_id')
+
+    const players = await fetch(
+      `${process.env.API_URL}/get_users?logged_user_id=${loggedUserID}`,
+      {
+        cache: 'no-cache',
+      },
+    ).then((res) => res.json())
+
+    return Response.json(players)
+  } catch (error) {
+    console.error(error)
+  }
 }
