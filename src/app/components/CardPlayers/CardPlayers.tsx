@@ -2,24 +2,38 @@
 
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { CardPlayerProps } from '@/types/types'
-import votePlayer from '@/usecases/votePlayer/VotePlayer'
+// import votePlayer from '@/usecases/votePlayer/VotePlayer'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 const CardPlayers = ({ players }: CardPlayerProps) => {
+  // const [playersState, setPlayersState] = useState(players)
   const router = useRouter()
 
   const handleCardClick = (id: string) => {
-    router.push(`player/${id}`)
+    router.push(`/player/${id}`)
   }
 
-  const handlePlayerVote = async (votedUserId: string) => {
-    await votePlayer({ voterId: '', votedUserId })
-  }
+  // const handlePlayerVote = async (votedUserId: string) => {
+  //   try {
+  //     const votedUserData = await votePlayer({
+  //       voterId: loggedUserID,
+  //       votedUserId,
+  //     })
+
+  //     const updatedPlayersList = playersState.map((player) =>
+  //       player.id === votedUserId ? { ...player, ...votedUserData } : player,
+  //     )
+
+  //     setPlayersState(updatedPlayersList)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
   return (
     <div className="grid gap-4 grid-cols-2 grid-rows-2 md:gap-8 md:grid-cols-4 md:grid-rows-4 lg:gap-6 lg:grid-cols-6 lg:grid-rows-6">
-      {players.map((player) => {
+      {players?.map((player) => {
         return (
           <Card
             key={player.id}
@@ -42,8 +56,8 @@ const CardPlayers = ({ players }: CardPlayerProps) => {
 
             <CardFooter className="flex justify-between mt-6">
               <div className="flex w-full justify-between">
-                <span onClick={() => handlePlayerVote(player.id)}>Votar</span>
-                <span>{player.rating}</span>
+                <span>Nota</span>
+                <span>{player.average_votes.overall_average}</span>
               </div>
             </CardFooter>
           </Card>
