@@ -87,9 +87,7 @@ const VotePlayer = ({
         </div>
       ))}
 
-      <Button onClick={handlerSaveVotePlayer} disabled>
-        Votar
-      </Button>
+      <Button onClick={handlerSaveVotePlayer}>Votar</Button>
     </div>
   )
 }

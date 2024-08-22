@@ -20,18 +20,21 @@ const votePlayer = async ({
   voterId,
   votedUserId,
 }: VotePlayerRequest): Promise<PlayerProps> => {
-  const res = await fetch(`http://localhost:3000/api/vote_player`, {
-    method: 'PATCH',
-    body: JSON.stringify({
-      pass_vote,
-      marking_vote,
-      quality_vote,
-      shot_vote,
-      velocity_vote,
-      voter_id: voterId,
-      voted_user_id: votedUserId,
-    }),
-  })
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_ROUTE_URL}/api/vote_player`,
+    {
+      method: 'PATCH',
+      body: JSON.stringify({
+        pass_vote,
+        marking_vote,
+        quality_vote,
+        shot_vote,
+        velocity_vote,
+        voter_id: voterId,
+        voted_user_id: votedUserId,
+      }),
+    },
+  )
 
   return res.json()
 }
