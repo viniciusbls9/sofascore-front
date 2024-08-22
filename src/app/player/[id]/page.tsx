@@ -12,7 +12,12 @@ const PlayerDetailPage = async ({ params }: { params: { id: string } }) => {
 
   const playerDetailData = await getUserById(params.id, loggedUserID.id)
 
-  return <PlayerDetailComponent {...playerDetailData} />
+  return (
+    <PlayerDetailComponent
+      playerData={playerDetailData}
+      loggedUserID={loggedUserID.id}
+    />
+  )
 }
 
 export default PlayerDetailPage

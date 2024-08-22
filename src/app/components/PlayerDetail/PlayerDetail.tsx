@@ -3,15 +3,26 @@ import { PlayerProps } from '@/types/types'
 import Image from 'next/image'
 import VotePlayer from '../VotePlayer/VotePlayer'
 
+interface PlayerDetailComponet {
+  playerData: PlayerProps
+  loggedUserID: string
+}
+
 const PlayerDetailComponent = ({
-  image_url,
-  name,
-  fav_position,
-  average_votes,
-  age,
-  preferred_foot,
-  shirt_number,
-}: PlayerProps) => {
+  playerData,
+  loggedUserID,
+}: PlayerDetailComponet) => {
+  const {
+    image_url,
+    name,
+    average_votes,
+    fav_position,
+    age,
+    preferred_foot,
+    shirt_number,
+    id,
+  } = playerData
+
   return (
     <div className="mx-auto md:container">
       <div className="flex flex-col lg:flex-row lg:space-x-4">
@@ -64,7 +75,11 @@ const PlayerDetailComponent = ({
       </div>
 
       <div className="rounded-lg border bg-card text-card-foreground shadow-sm sm:col-span-2 p-4 mt-8 lg:col-span-2 w-full">
-        <VotePlayer />
+        <VotePlayer
+          playerVotesData={playerData.average_votes}
+          loggedUserID={loggedUserID}
+          playerID={id}
+        />
       </div>
     </div>
   )
