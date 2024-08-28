@@ -10,6 +10,10 @@ const HomePage = async () => {
   if (!session?.user) redirect('/auth')
   const loggedUserID = await getUserByEmail(session.user.email as string)
 
+  if (!loggedUserID.id) {
+    redirect('/unauthorized')
+  }
+
   const players = await getPlayers(loggedUserID.id)
 
   return <CardPlayers players={players} loggedUserID={loggedUserID.id} />

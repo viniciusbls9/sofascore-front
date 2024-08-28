@@ -13,16 +13,15 @@ export async function PATCH(request: Request) {
     })
 
     if (!responseVote.ok) {
-      throw new Error(`Erro na API final: ${responseVote.statusText}`)
+      return NextResponse.json({
+        error: `Erro na API final: ${responseVote.statusText}`,
+      })
     }
 
     const data = await responseVote.json()
 
     return NextResponse.json(data)
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Error to proccess request' },
-      { status: 500 },
-    )
+    return NextResponse.json({ error }, { status: 500 })
   }
 }
