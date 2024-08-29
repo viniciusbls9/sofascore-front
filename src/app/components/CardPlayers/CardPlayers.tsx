@@ -14,7 +14,9 @@ const CardPlayers = ({ players }: CardPlayerProps) => {
 
   return (
     <div className="grid gap-4 grid-cols-2 grid-rows-2 md:gap-8 md:grid-cols-4 md:grid-rows-4 lg:gap-6 lg:grid-cols-6 lg:grid-rows-6">
-      {!Array.isArray(players) && <h1>Ainda nao temos usuarios cadastrados</h1>}
+      {!Array.isArray(players) && (
+        <h1 className="text-center">Ainda nao temos usuarios cadastrados</h1>
+      )}
       {players?.map((player) => {
         return (
           <Card
