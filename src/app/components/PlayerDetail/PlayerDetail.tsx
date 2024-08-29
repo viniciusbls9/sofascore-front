@@ -21,7 +21,7 @@ const PlayerDetailComponent = ({
     preferred_foot,
     shirt_number,
     id,
-  } = playerData
+  } = playerData || {}
 
   return (
     <div className="mx-auto md:container">

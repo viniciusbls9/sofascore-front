@@ -25,7 +25,7 @@ const VotePlayer = ({
   playerID,
 }: VotePlayerProps) => {
   const { pass_vote, marking_vote, quality_vote, shot_vote, velocity_vote } =
-    playerVotesData
+    playerVotesData || {}
 
   const [userVote, setUserVote] = useState<Record<VoteTypes, number>>({
     pass_vote,

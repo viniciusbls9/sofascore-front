@@ -2,37 +2,19 @@
 
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { CardPlayerProps } from '@/types/types'
-// import votePlayer from '@/usecases/votePlayer/VotePlayer'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 const CardPlayers = ({ players }: CardPlayerProps) => {
-  // const [playersState, setPlayersState] = useState(players)
   const router = useRouter()
 
   const handleCardClick = (id: string) => {
     router.push(`/player/${id}`)
   }
 
-  // const handlePlayerVote = async (votedUserId: string) => {
-  //   try {
-  //     const votedUserData = await votePlayer({
-  //       voterId: loggedUserID,
-  //       votedUserId,
-  //     })
-
-  //     const updatedPlayersList = playersState.map((player) =>
-  //       player.id === votedUserId ? { ...player, ...votedUserData } : player,
-  //     )
-
-  //     setPlayersState(updatedPlayersList)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-
   return (
     <div className="grid gap-4 grid-cols-2 grid-rows-2 md:gap-8 md:grid-cols-4 md:grid-rows-4 lg:gap-6 lg:grid-cols-6 lg:grid-rows-6">
+      {!Array.isArray(players) && <h1>Ainda nao temos usuarios cadastrados</h1>}
       {players?.map((player) => {
         return (
           <Card
