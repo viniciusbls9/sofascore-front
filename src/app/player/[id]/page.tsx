@@ -12,6 +12,8 @@ const PlayerDetailPage = async ({ params }: { params: { id: string } }) => {
 
   const playerDetailData = await getUserById(params.id, loggedUserID.id)
 
+  if (!playerDetailData.id) redirect('/')
+
   return (
     <PlayerDetailComponent
       playerData={playerDetailData}
