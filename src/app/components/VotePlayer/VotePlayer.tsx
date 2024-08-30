@@ -12,6 +12,7 @@ import {
 import { PlayerProps, VoteTypes } from '@/types/types'
 import votePlayer from '@/usecases/votePlayer/VotePlayer'
 import { useState } from 'react'
+import { useToast } from '@/components/ui/use-toast'
 
 interface VotePlayerProps {
   playerVotesData: PlayerProps['average_votes']
@@ -24,6 +25,8 @@ const VotePlayer = ({
   loggedUserID,
   playerID,
 }: VotePlayerProps) => {
+  const { toast } = useToast()
+
   const { pass_vote, marking_vote, quality_vote, shot_vote, velocity_vote } =
     playerVotesData || {}
 
@@ -46,12 +49,11 @@ const VotePlayer = ({
   ]
 
   const changeVotePlayerValue = (value: string, key: string) => {
-    console.log({ value, key })
     setUserVote((old) => ({ ...old, [key]: Number(value) }))
   }
 
   const handlerSaveVotePlayer = async () => {
-    await votePlayer({
+    const response = await votePlayer({
       pass_vote: userVote.pass_vote,
       marking_vote: userVote.marking_vote,
       quality_vote: userVote.quality_vote,
@@ -60,11 +62,26 @@ const VotePlayer = ({
       votedUserId: playerID,
       voterId: loggedUserID,
     })
+
+    if (!response.average_votes?.marking_vote) {
+      toast({
+        variant: 'destructive',
+        title: 'Problema para votar no usuário. Tente novamente',
+        description: 'Tivemos um problema para efetivar o voto no usuário',
+      })
+
+      return
+    }
+
+    toast({
+      title: 'Voto feito com sucesso!!',
+      description: 'Efetivamos seu voto',
+    })
   }
 
   return (
     <div className="grid grid-cols-2 w-full gap-6 items-end">
-      {voteArray.map((vote) => (
+      {voteArray?.map((vote) => (
         <div key={vote.id}>
           <p className="text-sm text-slate-400 mb-3">{vote.label}</p>
           <Select
