@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Toaster } from '@/components/ui/toaster'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark p-5 md:p-10 lg:p-16">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <main>{children}</main>
+        <Toaster />
+      </body>
     </html>
   )
 }
