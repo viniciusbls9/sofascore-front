@@ -79,6 +79,9 @@ const VotePlayer = ({
     })
   }
 
+  if (playerID === loggedUserID)
+    return <h1>Você nao pode Votar em você mesmo</h1>
+
   return (
     <div className="grid grid-cols-2 w-full gap-6 items-end">
       {voteArray?.map((vote) => (
