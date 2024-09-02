@@ -6,7 +6,7 @@ describe('AuthForm', () => {
   test('renders the AuthForm component correctly', () => {
     render(<AuthForm loginAction={jest.fn()} />)
 
-    expect(screen.getByText('Bem vindo')).toBeInTheDocument()
+    expect(screen.getByText('Copa Catarina')).toBeInTheDocument()
     expect(
       screen.getByText('Faça seu login e vote nos seus favoritos'),
     ).toBeInTheDocument()
