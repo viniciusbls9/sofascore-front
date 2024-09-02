@@ -34,7 +34,7 @@ const CardPlayers = ({ players }: CardPlayerProps) => {
               />
             </CardHeader>
 
-            <CardContent className="border-b border-green-500 text-center">
+            <CardContent className="border-b-2 border-violet-800 text-center">
               <span>{player.name}</span>
             </CardContent>
 

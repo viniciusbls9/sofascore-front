@@ -9,8 +9,8 @@ export function AuthForm({ loginAction }: AuthFormProps) {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-md text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          Bem vindo
+        <h1 className="text-3xl text-violet-800 font-bold tracking-tight text-foreground sm:text-4xl">
+          Copa Catarina
         </h1>
         <p className="mt-4 text-muted-foreground">
           Faça seu login e vote nos seus favoritos
