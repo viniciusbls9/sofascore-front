@@ -14,7 +14,7 @@ export async function PATCH(request: Request) {
 
     if (!responseVote.ok) {
       return NextResponse.json({
-        error: `Erro na API final: ${responseVote.statusText}`,
+        error: responseVote.statusText,
       })
     }
 
