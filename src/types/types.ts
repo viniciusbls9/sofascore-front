@@ -1,7 +1,6 @@
 export interface PlayerProps {
   id: string
   name: string
-  image: string
   email: string
   fav_position: string
   biography: string
@@ -29,5 +28,5 @@ export type VoteTypes =
 
 export interface CardPlayerProps {
   players: PlayerProps[]
-  loggedUserID: string
+  loggedUserID?: string
 }
